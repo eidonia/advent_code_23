@@ -1,6 +1,15 @@
+import java.io.File
+
 fun main(args: Array<String>) {
-    FirstDay.firstChall()
-    FirstDay.secondChall()
+    FirstDay(File("ListCoord").readLines(), 1).apply {
+        firstChallenge()
+        secondChallenge()
+    }
+
+   SecondDay(File("ListGame").readLines(), 2).apply {
+        firstChallenge()
+        secondChallenge()
+    }
 }
 
 

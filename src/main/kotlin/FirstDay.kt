@@ -1,20 +1,21 @@
-import java.io.File
+import utils.BaseClass
 
+class FirstDay(private val input: List<String>, day: Int) : BaseClass(day) {
 
-object FirstDay {
-    fun firstChall() {
-        val list = mutableListOf<String>()
+    override fun firstChallenge() {
+        super.firstChallenge()
         var sum = 0
-
-        File("ListCoord").forEachLine {text ->
-            if (text.contains(Regex("\\d"))){
+        input.forEach { text ->
+            if (text.contains(Regex("\\d"))) {
                 sum += sum(text)
             }
         }
-        println("firstChall: $sum")
+        println(sum)
     }
 
-    fun secondChall() {
+    override fun secondChallenge() {
+        super.secondChallenge()
+
         val listOfNumber = listOf(
             IntString.ONE.text,
             IntString.TWO.text,
@@ -30,8 +31,7 @@ object FirstDay {
         var sum = 0
         val pattern = "(?=(\\d|one|two|three|four|five|six|seven|eight|nine))".toRegex()
 
-        File("ListCoord").forEachLine {
-
+        input.forEach {
             val sumList = pattern.findAll(it).map {
                 it.groupValues.filter {
                     it.isNotEmpty()
@@ -49,10 +49,15 @@ object FirstDay {
 
         }
 
-        println("SecondChall : $sum")
+        println(sum)
+
     }
 
-    enum class IntString(val text: String, val number: Int) {
+    private fun sum(text: String) =
+        (text.toList().first { c -> c.isDigit() }.toString() + text.toList().reversed().first { c -> c.isDigit() }
+            .toString()).toInt()
+
+    private enum class IntString(val text: String, val number: Int) {
         ONE("one", 1),
         TWO("two", 2),
         THREE("three", 3),
@@ -64,8 +69,4 @@ object FirstDay {
         NINE("nine", 9)
     }
 
-
-    private fun sum(text: String) =
-        (text.toList().first { c -> c.isDigit() }.toString() + text.toList().reversed().first { c -> c.isDigit() }
-            .toString()).toInt()
 }
