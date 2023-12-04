@@ -10,6 +10,12 @@ fun main(args: Array<String>) {
         firstChallenge()
         secondChallenge()
     }
+
+    FourthDay(File("ListScratchCard").readLines(), 4).apply {
+        firstChallenge()
+    }
+
+
 }
 
 

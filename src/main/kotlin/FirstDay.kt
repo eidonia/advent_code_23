@@ -50,7 +50,6 @@ class FirstDay(private val input: List<String>, day: Int) : BaseClass(day) {
         }
 
         println(sum)
-
     }
 
     private fun sum(text: String) =
@@ -68,5 +67,4 @@ class FirstDay(private val input: List<String>, day: Int) : BaseClass(day) {
         EIGHT("eight", 8),
         NINE("nine", 9)
     }
-
 }
